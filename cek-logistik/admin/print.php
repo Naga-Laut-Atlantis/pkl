@@ -31,15 +31,27 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" class="form-horizontal form-material">
-                            <div class="form-row">
-                                <div class="form-group col-5">
+                        <form action="" class="form-horizontal form-material d-print-none">
+                            <div class="form-row pb-2">
+                                <div class="form-group col-3">
                                     <label for="tanggal-awal">Dari Tanggal</label>
                                     <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line">
                                 </div>
-                                <div class="form-group col-5">
+                                <div class="col-1"></div>
+                                <div class="form-group col-3">
                                     <label for="tanggal-awal">Sampai Tanggal</label>
                                     <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line">
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-3">
+                                    <div class="dropright">
+                                        <button type="button" class="btn btn-info dropdown-toggle" id="export-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Export</button>
+                                        <div class="dropdown-menu" arialabelledby="export-btn">
+                                            <button type="button" class="dropdown-item" onclick="window.print()">PDF</button>
+                                            <button type="button" class="dropdown-item" onclick="">Excel</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
