@@ -104,13 +104,13 @@
     <!-- ============================================================== -->
     <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body p-5">
-                <p class="text-center mb-4" style="font-size: 140%;"><strong>Apakah anda yakin ingin menghapusnya?</strong></p>
-                <a href="" type="button" class="btn btn-danger d-inline-block float-right">Hapus</a>
-                <button type="button" class="btn btn-secondary d-inline-block float-right mr-2" data-dismiss="modal">Kembali</button>
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <p class="text-center mb-4" style="font-size: 140%;"><strong>Apakah anda yakin ingin menghapusnya?</strong></p>
+                    <a href="" type="button" class="btn btn-danger d-inline-block float-right">Hapus</a>
+                    <button type="button" class="btn btn-secondary d-inline-block float-right mr-2" data-dismiss="modal">Kembali</button>
+                </div>
             </div>
-        </div>
         </div>
     </div>
     <!-- ============================================================== -->

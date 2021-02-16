@@ -240,13 +240,6 @@
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
 <!-- ============================================================== -->
-<!--This page JavaScript -->
-<!-- ============================================================== -->
-<!--flot chart-->
-<script src="../assets/plugins/flot/jquery.flot.js"></script>
-<script src="../assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script src="js/pages/dashboards/dashboard1.js"></script>
-<!-- ============================================================== -->
 <!-- Require Footer -->
 <!-- ============================================================== -->
 <?php require_once 'lib/footer.php'; ?>
