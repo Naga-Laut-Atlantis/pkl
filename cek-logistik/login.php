@@ -19,6 +19,7 @@ if (isset($_POST["submit"])) {
             $row = $result->fetch_object();
             $_SESSION['kode'] = $row->kode;
             $_SESSION['nama'] = $row->nama;
+            $_SESSION['role'] = $row->jabatan;
             $result->free();
             if ($row->jabatan == 'PIC') {
                 header('Location: ./');

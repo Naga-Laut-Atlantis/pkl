@@ -5,6 +5,10 @@
 session_start(); // resume session
 if (!isset($_SESSION['kode'])) { // cek session
     header('Location: login.php');
+}else {
+    if($_SESSION['role'] != 'PIC'){
+        header('Location: admin/');
+    }
 }
 require_once 'lib/db_login.php';
 

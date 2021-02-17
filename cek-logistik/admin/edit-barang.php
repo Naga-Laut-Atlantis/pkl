@@ -5,6 +5,10 @@
 session_start(); // resume session
 if (!isset($_SESSION['kode'])) { // cek session
     header('Location: login.php');
+}else {
+    if($_SESSION['role'] == 'PIC'){
+        header('Location: ../');
+    }
 }
 require_once 'lib/db_login.php';
 $kode_brg = $_GET['kode_brg']; // Get kode dari header http atau url
