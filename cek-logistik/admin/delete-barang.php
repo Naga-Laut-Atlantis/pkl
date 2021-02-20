@@ -2,7 +2,7 @@
     // melakukan query untuk menghapus barang dari db dan menghapus foto di direktori
     session_start(); // resume session
     if (!isset($_SESSION['kode'])) { // cek session
-        header('Location: login.php');
+        header('Location: ../login.php');
     }else {
         if($_SESSION['role'] == 'PIC'){
             header('Location: ../');
