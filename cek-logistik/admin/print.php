@@ -23,7 +23,7 @@
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
-<div class="page-wrapper">
+<div class="page-wrapper d-print-none">
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -31,7 +31,7 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
-        <div class="card d-print-none">
+        <div class="card">
             <div class="card-body">
                 <form action="" class="form-horizontal form-material">
                     <div class="form-row pb-2">
@@ -66,32 +66,38 @@
                     <table class="table user-table">
                         <thead>
                             <tr>
-                                <th>Kode</th>
-                                <th>Jenis</th>
-                                <th>Nama</th>
+                            <th class="border-top-0">Kode Peralatan</th>
+                            <th class="border-top-0">Jenis Barang</th>
+                            <th class="border-top-0">Nama Barang</th>
+                            <th class="border-top-0">Tahun</th>
+                            <th class="border-top-0">Lokasi</th>
+                            <th class="border-top-0">PIC</th>
+                            <th class="border-top-0">Tanggal Cek</th>
+                            <th class="border-top-0">Kondisi</th>
+                            <th class="border-top-0">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mebel</td>
-                                <td>Kursi</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mebel</td>
-                                <td>Meja</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Elektronik</td>
-                                <td>Printer</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Elektronik</td>
-                                <td>Fingerprint Scanner</td>
-                            </tr>
+                        <?php
+                            $result = $db->query(" SELECT * FROM cek ORDER BY tgl_cek DESC");
+                            if (!$result) {
+                                die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
+                            }
+                            while ($row = $result->fetch_object()) { 
+                                echo '<tr>';
+                                    echo '<td>'.$row->kode_brg.'</td>';
+                                    echo '<td>'.$row->jenis_brg.'</td>';
+                                    echo '<td>'.$row->nama_brg.'</td>';
+                                    echo '<td>'.$row->tahun.'</td>';
+                                    echo '<td>'.$row->lokasi.'</td>';
+                                    echo '<td>'.$row->pic.'</td>';
+                                    echo '<td>'.$row->tgl_cek.'</td>';
+                                    echo '<td>'.$row->kondisi.'</td>';
+                                    echo '<td>'.$row->keterangan.'</td>';
+                                echo '</tr>';
+                            }
+                            $result->free();
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -117,6 +123,63 @@
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Page Print -->
+<!-- ============================================================== -->
+<div class="d-none d-print-block">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Tabel Peralatan Logistik</h4>
+                <div class="table-responsive-sm">
+                    <table class="table user-table">
+                        <thead>
+                            <tr>
+                            <th class="border-top-0">Kode Peralatan</th>
+                            <th class="border-top-0">Jenis Barang</th>
+                            <th class="border-top-0">Nama Barang</th>
+                            <th class="border-top-0">Tahun</th>
+                            <th class="border-top-0">Lokasi</th>
+                            <th class="border-top-0">PIC</th>
+                            <th class="border-top-0">Tanggal Cek</th>
+                            <th class="border-top-0">Kondisi</th>
+                            <th class="border-top-0">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $resultPrint = $db->query(" SELECT * FROM cek ORDER BY tgl_cek DESC");
+                            if (!$resultPrint) {
+                                die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
+                            }
+                            while ($rowPrint = $resultPrint->fetch_object()) {
+                                echo '<tr>';
+                                    echo '<td>'.$rowPrint->kode_brg.'</td>';
+                                    echo '<td>'.$rowPrint->jenis_brg.'</td>';
+                                    echo '<td>'.$rowPrint->nama_brg.'</td>';
+                                    echo '<td>'.$rowPrint->tahun.'</td>';
+                                    echo '<td>'.$rowPrint->lokasi.'</td>';
+                                    echo '<td>'.$rowPrint->pic.'</td>';
+                                    echo '<td>'.$rowPrint->tgl_cek.'</td>';
+                                    echo '<td>'.$rowPrint->kondisi.'</td>';
+                                    echo '<td>'.$rowPrint->keterangan.'</td>';
+                                echo '</tr>';
+                            }
+                            $resultPrint->free();
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Print -->
+<!-- ============================================================== -->
+<?php
+    $db->close();
+?>
 <!-- ============================================================== -->
 <!-- Require Footer -->
 <!-- ============================================================== -->
