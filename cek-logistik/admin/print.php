@@ -21,6 +21,17 @@
 <?php require_once "lib/topbar.php"; ?>
 <?php require_once "lib/sidebar.php"; ?>
 <!-- ============================================================== -->
+<!-- Set Tanggal  -->
+<!-- ============================================================== -->
+<?php
+setlocale(LC_ALL, 'id-ID', 'id_ID.utf8');
+if (isset($_POST['submit'])) {
+    $tanggal_awal = $_POST['tanggal-awal'];
+    $tanggal_akhir = $_POST['tanggal-akhir'];
+}
+$tglSekarang = date('Y-m-d');
+?>
+<!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
 <div class="page-wrapper d-print-none">
@@ -33,19 +44,28 @@
         <!-- ============================================================== -->
         <div class="card">
             <div class="card-body">
-                <form action="" class="form-horizontal form-material">
+                <form action="" method="POST" class="form-horizontal form-material">
                     <div class="form-row pb-2">
                         <div class="form-group col-3">
                             <label for="tanggal-awal">Dari Tanggal</label>
-                            <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line">
+                            <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line" value="<?php if (isset($tanggal_awal)) {
+                                                                                                                                        echo $tanggal_awal;
+                                                                                                                                    } else {
+                                                                                                                                        echo $tglSekarang;
+                                                                                                                                    } ?>">
                         </div>
                         <div class="col-1"></div>
                         <div class="form-group col-3">
                             <label for="tanggal-awal">Sampai Tanggal</label>
-                            <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line">
+                            <input type="date" name="tanggal-akhir" id="tanggal-akhir" class="form-control form-control-line" value="<?php if (isset($tanggal_akhir)) {
+                                                                                                                                        echo $tanggal_akhir;
+                                                                                                                                    } else {
+                                                                                                                                        echo $tglSekarang;
+                                                                                                                                    } ?>">
                         </div>
                         <div class="col-1"></div>
                         <div class="col-3">
+                            <button type="submit" class="btn btn-primary mb-3" id="submit" name="submit">Tampil</button>
                             <div class="dropright">
                                 <button type="button" class="btn btn-info dropdown-toggle" id="export-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Export</button>
@@ -79,7 +99,12 @@
                         </thead>
                         <tbody>
                         <?php
-                            $result = $db->query(" SELECT * FROM cek ORDER BY tgl_cek DESC");
+                            if (isset($tanggal_awal)) {
+                                $query = " SELECT * FROM cek WHERE tgl_cek BETWEEN '".$tanggal_awal."' AND '".$tanggal_akhir."' ORDER BY tgl_cek DESC ";
+                            } else {
+                                $query = " SELECT * FROM cek WHERE tgl_cek BETWEEN '".$tglSekarang."' AND '".$tglSekarang."' ORDER BY tgl_cek DESC ";
+                            }
+                            $result = $db->query($query);
                             if (!$result) {
                                 die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
                             }
@@ -130,7 +155,17 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-center">Tabel Peralatan Logistik</h4>
+                <p class="card-title text-center" style="font-size: 200%">Tabel Peralatan Logistik</p>
+                <p class="card-title text-center" style="font-size: 120%">Periode tanggal <?php if (isset($tanggal_awal)) {
+                                                                                            echo strftime('%d %B %Y', strtotime($tanggal_awal));
+                                                                                        } else {
+                                                                                            echo strftime('%d %B %Y', strtotime($tglSekarang));
+                                                                                        } ?>
+                                                                        Sampai tanggal <?php if (isset($tanggal_akhir)) {
+                                                                                            echo strftime('%d %B %Y', strtotime($tanggal_akhir));
+                                                                                        } else {
+                                                                                            echo strftime('%d %B %Y', strtotime($tglSekarang));
+                                                                                        } ?></p>
                 <div class="table-responsive-sm">
                     <table class="table user-table">
                         <thead>
@@ -148,9 +183,14 @@
                         </thead>
                         <tbody>
                         <?php
-                            $resultPrint = $db->query(" SELECT * FROM cek ORDER BY tgl_cek DESC");
+                            if (isset($tanggal_awal)) {
+                                $queryPrint = " SELECT * FROM cek WHERE tgl_cek BETWEEN '".$tanggal_awal."' AND '".$tanggal_akhir."' ORDER BY tgl_cek DESC ";
+                            } else {
+                                $queryPrint = " SELECT * FROM cek WHERE tgl_cek BETWEEN '".$tglSekarang."' AND '".$tglSekarang."' ORDER BY tgl_cek DESC ";
+                            }
+                            $resultPrint = $db->query($queryPrint);
                             if (!$resultPrint) {
-                                die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
+                                die ("Could not query the database: <br>".$db->error."<br>Query: ".$queryPrint);
                             }
                             while ($rowPrint = $resultPrint->fetch_object()) {
                                 echo '<tr>';
@@ -170,6 +210,7 @@
                         </tbody>
                     </table>
                 </div>
+                <p>Dicetak pada hari <?php echo strftime('%A, %d %B %Y', strtotime($tglSekarang)); ?></p>
             </div>
         </div>
     </div>
@@ -177,9 +218,7 @@
 <!-- ============================================================== -->
 <!-- End Page Print -->
 <!-- ============================================================== -->
-<?php
-    $db->close();
-?>
+<?php $db->close(); ?>
 <!-- ============================================================== -->
 <!-- Require Footer -->
 <!-- ============================================================== -->
