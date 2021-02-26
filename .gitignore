@@ -1,0 +1,3 @@
+#ignoring db_login
+cek-logistik/admin/lib/db_login.php
+cek-logistik/lib/db_login.php
