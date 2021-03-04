@@ -17,6 +17,10 @@
     <script src="../js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../js/custom.js"></script>
+    <!-- Data Tables Javascript -->
+    <script src="../../assets/plugins/DataTables/datatables.min.js"></script>
+    <!-- Script for modal -->
+    <script src="../js/datatables.js"></script>
     <!-- Script for modal -->
     <script src="../js/modal-admin.js"></script>
 </body>
