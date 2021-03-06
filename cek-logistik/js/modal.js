@@ -6,7 +6,7 @@ $('#hapusModal').on('show.bs.modal', function (event) {
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    var url = "delete-barang.php?kode_brg="+recipient+"&tgl="+recipient1;
+    var url = "delete-cek.php?kode_brg="+recipient+"&tgl="+recipient1;
     modal.find('a').attr("href", url);
 });
 

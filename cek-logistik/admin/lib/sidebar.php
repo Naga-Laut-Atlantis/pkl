@@ -15,10 +15,7 @@
                             href="pages-profile.php" aria-expanded="false"><i class="mr-3 fa fa-user" 
                                 aria-hidden="true"></i><span class="hide-menu">Profile</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="print.php" aria-expanded="false"><i class="mr-3 fas fa-print" 
-                                aria-hidden="true"></i><span class="hide-menu">Cetak Laporan</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="tabel-barang.php" aria-expanded="false"><i class="mr-3 fa fa-table"
+                            href="tabel-cek.php" aria-expanded="false"><i class="mr-3 fa fa-table"
                                 aria-hidden="true"></i><span class="hide-menu">Tabel Cek Peralatan</span></a></li>
                 </ul>
             </nav>

@@ -4,10 +4,10 @@
 <?php
 session_start(); // resume session
 if (!isset($_SESSION['kode'])) { // cek session
-    header('Location: ../login.php');
+    header('Location: login.php');
 }else {
-    if($_SESSION['role'] == 'PIC'){
-        header('Location: ../');
+    if($_SESSION['role'] != 'PIC'){
+        header('Location: admin/');
     }
 }
 require_once 'lib/db_login.php';
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
         }else {
             // close connection
             $db->close();
-            header('Location: tabel-barang.php');
+            header('Location: tabel-cek.php');
         }
     }
 }
@@ -147,7 +147,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-6"></div>
                         <div class="col-md-2 align-self-end">
                             <button type="submit" class="btn btn-primary d-inline-block mr-3" name="submit" value="submit">Submit</button>
-                            <a href="tabel-barang.php" class="btn btn-danger d-inline-block">Cancel</a>
+                            <a href="tabel-cek.php" class="btn btn-danger d-inline-block">Cancel</a>
                         </div>
                     </div>
                     <br>

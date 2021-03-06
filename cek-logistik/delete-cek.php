@@ -26,7 +26,7 @@
     }else {
         $result_foto->free();
         $db->close();
-        header('Location: tabel-barang.php');
+        header('Location: tabel-cek.php');
     }
     #close db connection
     $db->close();
