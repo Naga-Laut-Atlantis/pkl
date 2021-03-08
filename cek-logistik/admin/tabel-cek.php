@@ -75,7 +75,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
         </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-center">Tabel Peralatan Logistik</h4>
+                <h4 class="card-title text-center">Tabel Cek Peralatan Logistik</h4>
                 <div class="table-responsive-sm">
                     <table class="table user-table" id="tabel-print" style="table-layout: auto;">
                         <thead>
@@ -115,10 +115,12 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                                     echo '<td>'.$row->kondisi.'</td>';
                                     echo '<td>'.$row->keterangan.'</td>';
                                     echo '<td>
-                                            <button type="button" class="btn btn-success text-white mb-1" data-toggle="modal" data-target="#fotoModalAdmin" data-whatever="'.$row->foto.'">Foto</button>
-                                            <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning d-inline-block text-white mb-1">Edit</a>
-                                            <button type="button" class="btn btn-danger d-inline-block text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
-                                        </td>';
+                                            <div class="btn-group-vertical">
+                                                <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#fotoModalAdmin" data-whatever="'.$row->foto.'">Foto</button>
+                                                <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning text-white ">Edit</a>
+                                                <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
+                                            </div>
+                                          </td>';
                                 echo '</tr>';
                             }
                             $result->free();

@@ -36,8 +36,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title d-inline">Tabel Peralatan Logistik</h4>
-                        <a href="add-cek.php" type="button" class="btn btn-primary float-right d-inline-block"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
+                        <h4 class="card-title d-inline">Tabel Cek Peralatan Logistik</h4>
+                        <a href="add-cek.php" type="button" class="btn btn-primary float-right d-inline-block" style="font-size: 120%"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
                         <div class="table-responsive-sm">
                             <table class="table user-table" style="table-layout: auto;">
                                 <thead>
@@ -73,9 +73,11 @@
                                         echo '<td>'.$row->kondisi.'</td>';
                                         echo '<td>'.$row->keterangan.'</td>';
                                         echo '<td>
-                                                <button type="button" class="btn btn-success d- text-white mb-1" data-toggle="modal" data-target="#fotoModal" data-whatever="'.$row->foto.'">Lihat&nbsp;Foto</button><br>
-                                                <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning d-inline-flex text-white mb-1">Edit</a>
-                                                <button type="button" class="btn btn-danger d-inline-flex text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
+                                                <div class="btn-group-vertical">
+                                                    <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#fotoModal" data-whatever="'.$row->foto.'">Foto</button>
+                                                    <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning text-white">Edit</a>
+                                                    <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
+                                                </div>
                                               </td>';
                                         echo '</tr>';
                                     }

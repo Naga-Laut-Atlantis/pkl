@@ -1,4 +1,4 @@
-// script untuk modal hapus
+// script untuk modal hapus cek
 $('#hapusModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var recipient = button.data('whatever'); // Extract info from data-* attributes
@@ -7,6 +7,17 @@ $('#hapusModal').on('show.bs.modal', function (event) {
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
   var url = "delete-cek.php?kode_brg="+recipient+"&tgl="+recipient1;
+  modal.find('a').attr("href", url);
+});
+
+// script untuk modal hapus barang
+$('#hapusModalBarang').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var recipient = button.data('whatever'); // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  var url = "delete-barang.php?kode_brg="+recipient;
   modal.find('a').attr("href", url);
 });
 
