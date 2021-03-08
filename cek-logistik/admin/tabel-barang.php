@@ -33,7 +33,9 @@
     <!-- ============================================================== -->
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title text-center">Tabel Peralatan Logistik</h4>
+        <a href="add-barang.php" type="button" class="btn btn-primary float-left d-inline-block" style="font-size: 110%"><i class="fas fa-upload"></i>&nbsp;Import Peralatan</a>
+        <a href="add-barang.php" type="button" class="btn btn-primary float-right d-inline-block" style="font-size: 110%"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
+        <br><br><h4 class="card-title text-center">Tabel Peralatan Logistik</h4>
         <div class="table-responsive-sm">
           <table class="table user-table" id="tabel-barang" style="table-layout: auto;">
             <thead>
