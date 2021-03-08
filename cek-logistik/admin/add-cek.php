@@ -14,7 +14,7 @@ require_once 'lib/db_login.php';
 
 if (isset($_POST['submit'])) {
     $valid = TRUE;
-    $target_dir = "../assets/images/upload/";
+    $target_dir = "../../assets/images/upload/";
     $target_file = $target_dir.basename($_FILES['foto']['name']);
 
     $kode_brg = test_input($_POST['kode_brg']);
