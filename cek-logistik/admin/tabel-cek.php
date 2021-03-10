@@ -75,7 +75,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
         </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-center">Tabel Cek Peralatan Logistik</h4>
+                <h4 class="card-title text-center" style="font-size: 200%;">Tabel Cek Peralatan Logistik</h4>
                 <div class="table-responsive-sm">
                     <table class="table user-table" id="tabel-print" style="table-layout: auto;">
                         <thead>

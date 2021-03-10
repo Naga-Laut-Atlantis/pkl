@@ -1,0 +1,28 @@
+/* @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btnImport {
+    border: 0px solid #4f94e3;
+    color: #4f94e3;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+} */

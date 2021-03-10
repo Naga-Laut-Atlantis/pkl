@@ -36,7 +36,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title d-inline">Tabel Cek Peralatan Logistik</h4>
+                        <h4 class="card-title d-inline" style="font-size: 200%;">Tabel Cek Peralatan Logistik</h4>
                         <a href="add-cek.php" type="button" class="btn btn-primary float-right d-inline-block" style="font-size: 120%"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
                         <div class="table-responsive-sm">
                             <table class="table user-table" style="table-layout: auto;">

@@ -78,7 +78,7 @@ if (!isset($_POST['submit'])) {
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
-        <div class="card">
+        <div class="card" style="margin-top: 3%; margin-bottom: 6%;">
             <div class="card-body">
                 <h4 class="card-title text-center">Edit Peralatan</h4>
                 <br>
