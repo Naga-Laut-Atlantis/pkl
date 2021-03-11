@@ -35,12 +35,10 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-6">
-            <form action="import.php" method="post" class="form-horizontal form-material" enctype="multipart/form-data">
+            <form action="lib/import.php" method="post" class="form-horizontal form-material" enctype="multipart/form-data">
               <div class="form-group d-inline">
-                <!-- <button class="btnImport"><i class="fas fa-upload"></i>&nbsp;<br>Import a file</button> -->
-                <input type="file" class="form-control-input mb-2" name="myfile" id="myfile" />
-                <br>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i>&nbsp;Import File</button>
+                <button type="submit" class="btn btn-primary mr-1" style="font-size: 110%"><i class="fas fa-upload"></i>&nbsp;Import File</button>
+                <input type="file" class="form-control-input mb-2" name="myfile" id="myfile" required/>
               </div>
             </form>
           </div>
@@ -48,7 +46,7 @@
             <a href="add-barang.php" type="button" class="btn btn-primary float-right d-inline-block" style="font-size: 110%"><i class="fas fa-plus"></i>&nbsp;Tambah Peralatan</a>
           </div>
         </div>
-        <h4 class="card-title text-center d-block" style="font-size: 200%;">Tabel Peralatan Logistik</h4>
+        <h4 class="card-title text-center d-block mt-4" style="font-size: 200%;">Tabel Peralatan Logistik</h4>
         <div class="table-responsive-sm">
           <table class="table user-table" id="tabel-barang" style="table-layout: auto;">
             <thead>
