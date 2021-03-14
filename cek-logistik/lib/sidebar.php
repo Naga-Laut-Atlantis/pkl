@@ -14,6 +14,8 @@
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="tabel-cek.php" aria-expanded="false"><i class="mr-3 fa fa-table"
                                 aria-hidden="true"></i><span class="hide-menu">Tabel Cek Peralatan</span></a></li>
+                    <li class="text-center p-20 upgrade-btn d-md-none"><a href="../logout.php"
+                            class="btn btn-danger text-white mt-4">Logout</a></li>
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->

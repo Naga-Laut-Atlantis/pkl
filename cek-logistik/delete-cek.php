@@ -22,11 +22,14 @@
     // execute query 
     $result = $db->query(" DELETE FROM cek WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tgl_cek."' ");
     if (!$result) {
-        die ("Could not query the database: <br>".$db->error);
+        // die ("Could not query the database: <br>".$db->error);
+        $result_foto->free();
+        $db->close();
+        header('Location: tabel-cek.php?success=-3');
     }else {
         $result_foto->free();
         $db->close();
-        header('Location: tabel-cek.php');
+        header('Location: tabel-cek.php?success=3');
     }
     #close db connection
     $db->close();

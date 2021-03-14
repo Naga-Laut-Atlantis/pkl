@@ -49,16 +49,7 @@
                 <!-- toggle and nav items -->
                 <!-- ============================================================== -->
                 <ul class="navbar-nav mr-auto mt-md-0 ">
-                    <!-- ============================================================== -->
-                    <!-- Search -->
-                    <!-- ============================================================== -->
-
-                    <li class="nav-item hidden-sm-down">
-                        <form class="app-search pl-3">
-                            <input type="text" class="form-control" placeholder="Search for..."> <a
-                                class="srh-btn"><i class="ti-search"></i></a>
-                        </form>
-                    </li>
+                    
                 </ul>
 
                 <!-- ============================================================== -->
@@ -70,8 +61,7 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg"
-                                alt="user" class="profile-pic mr-2"><strong><?php echo $_SESSION['nama']; ?></strong></a>
+                            aria-haspopup="true" aria-expanded="false"><strong><?php echo $_SESSION['nama']; ?></strong></a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="logout.php">Logout</a>
                             </div>

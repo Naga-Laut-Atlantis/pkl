@@ -61,11 +61,14 @@ if (isset($_POST['submit'])) {
         ,'".$pic."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
 
         if (!$result) {
-            die ("could not query the database: <br>".$db->error);
+            // die ("could not query the database: <br>".$db->error);
+            // close connection
+            $db->close();
+            header('Location: tabel-cek.php?success=-1');
         }else {
             // close connection
             $db->close();
-            header('Location: tabel-cek.php');
+            header('Location: tabel-cek.php?success=1');
         }
     }
 }
@@ -97,7 +100,7 @@ if (isset($_POST['submit'])) {
                     <div class="form-row mb-3">
                         <div class="form-group col-md-5">
                             <label for="kode_brg">Kode Peralatan</label>
-                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" onchange="getBarang(this.value)" required>
+                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" oninput="getBarang(this.value)" value="<?php echo isset($_POST['kode-index']) ? $_POST['kode-index'] : ''; ?>" required>
                             <p id="error-kode" style="color: red;"></p>
                         </div>
                         <div class="form-group col-md-4">
