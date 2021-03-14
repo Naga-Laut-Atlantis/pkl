@@ -39,7 +39,7 @@
                         <h4 class="card-title mb-3">Cek Barang</h4>
                         <form action="add-cek.php" method="post" class="form-inline">
                             <div class="form-group mr-3">
-                                <input type="text" name="kode-index" id="kode-index" class="form-control" placeholder="mis. 135789642">
+                                <input type="text" name="kode-index" id="kode-index" class="form-control" placeholder="Kode Barang">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

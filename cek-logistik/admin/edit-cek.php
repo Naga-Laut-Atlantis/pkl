@@ -100,11 +100,14 @@ if (!isset($_POST['submit'])) {
         }
 
         if (!$result) {
-            die ("could not query the database: <br>".$db->error);
+            // die ("could not query the database: <br>".$db->error);
+            // close connection
+            $db->close();
+            header('Location: tabel-cek.php?success=-2');
         }else {
             // close connection
             $db->close();
-            header('Location: tabel-cek.php');
+            header('Location: tabel-cek.php?success=2');
         }
     }
 }
@@ -132,7 +135,7 @@ if (!isset($_POST['submit'])) {
             <div class="card-body">
                 <h4 class="card-title text-center">Edit Cek Peralatan</h4>
                 <br>
-                <form method="POST" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]).'?kode_brg='.$kode_brg; ?>" enctype="multipart/form-data">
+                <form method="POST" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]).'?kode_brg='.$kode_brg.'&tgl='.$tanggal; ?>" enctype="multipart/form-data">
                     <div class="form-row mb-3">
                         <div class="form-group col-md-5">
                             <label for="kode_brg">Kode Peralatan</label>
@@ -195,8 +198,6 @@ if (!isset($_POST['submit'])) {
         <!-- ============================================================== -->
         <!-- End Page Content -->
         <!-- ============================================================== -->
-        <?php $result->free();
-              $db->close(); ?>
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->

@@ -33,7 +33,6 @@
         <!-- ============================================================== -->
         <div class="row">
             <div class="col-sm-12">
-                <div id="alert-response">
                 <?php
                 if (isset($_GET['success'])) {
                     switch ($_GET['success']) {
@@ -67,7 +66,6 @@
                             </button>
                         </div>';
                 } ?>
-                </div>
             </div>
         </div>
         <div class="row">

@@ -14,14 +14,15 @@
   require_once('lib/db_login.php');
 
   // execute query 
-  $result = $db->query(" DELETE FROM cek WHERE kode_brg='".$kode_brg."' ");
+  $result = $db->query(" DELETE FROM barang WHERE kode_brg='".$kode_brg."' ");
   if (!$result) {
-    die ("Could not query the database: <br>".$db->error);
-  }else {
-    $result->free();
+    // die ("Could not query the database: <br>".$db->error);
     $db->close();
-    header('Location: tabel-barang.php');
+    header('Location: tabel-barang.php?success=-3');
+  }else {
+    $db->close();
+    header('Location: tabel-barang.php?success=3');
   }
-  #close db connection
-  $db->close();
+  // #close db connection
+  // $db->close();
 ?>

@@ -31,6 +31,43 @@
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
+    <div class="row">
+      <div class="col-sm-12">
+        <?php
+        if (isset($_GET['success'])) {
+          switch ($_GET['success']) {
+            case '1':
+              echo '<div class="alert alert-success alert-dismissible fade show">
+                    <strong>Sukses!</strong> Barang telah ditambahkan.<br>';
+              break; 
+            case '-1':
+              echo '<div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Gagal!</strong> Barang gagal ditambahkan.<br>';
+              break;
+            case '2':
+              echo '<div class="alert alert-success alert-dismissible fade show">
+                    <strong>Sukses!</strong> Data Barang telah diedit.<br>';
+              break;
+            case '-2':
+              echo '<div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Gagal!</strong> Data Barang gagal diedit.<br>';
+              break;
+            case '3':
+              echo '<div class="alert alert-success alert-dismissible fade show">
+                    <strong>Sukses!</strong> Data Barang telah dihapus.<br>';
+              break;
+            case '-3':
+              echo '<div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Gagal!</strong> Data Barang gagal dihapus.<br>';
+              break;
+          }  
+          echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+        } ?>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
         <div class="row">

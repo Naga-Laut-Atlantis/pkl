@@ -36,11 +36,14 @@ if (isset($_POST['submit'])) {
     ,'".$pic."') ");
 
     if (!$result) {
-      die ("could not query the database: <br>".$db->error);
+      // die ("could not query the database: <br>".$db->error);
+      // close connection
+      $db->close();
+      header('Location: tabel-barang.php?success=-1');
     }else {
       // close connection
       $db->close();
-      header('Location: tabel-barang.php');
+      header('Location: tabel-barang.php?success=1');
     }
   }
 }

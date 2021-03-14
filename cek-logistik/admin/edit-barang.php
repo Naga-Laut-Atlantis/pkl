@@ -50,11 +50,14 @@ if (!isset($_POST['submit'])) {
                               tahun='".$tahun."', lokasi='".$lokasi."', pic='".$pic."' WHERE kode_brg='".$kode_brg."' ");
 
         if (!$result) {
-            die ("could not query the database: <br>".$db->error);
+            // die ("could not query the database: <br>".$db->error);
+            // close connection
+            $db->close();
+            header('Location: tabel-barang.php?success=-2');
         }else {
             // close connection
             $db->close();
-            header('Location: tabel-barang.php');
+            header('Location: tabel-barang.php?success=2');
         }
     }
 }
