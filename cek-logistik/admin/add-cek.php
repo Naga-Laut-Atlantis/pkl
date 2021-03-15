@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
                     <div class="form-row mb-3">
                         <div class="form-group col-md-5">
                             <label for="kode_brg">Kode Peralatan</label>
-                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" onchange="getBarang(this.value)" required>
+                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" oninput="getBarang(this.value)" required>
                             <p id="error-kode" style="color: red;"></p>
                         </div>
                         <div class="form-group col-md-4">

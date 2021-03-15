@@ -50,7 +50,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                     switch ($_GET['success']) {
                         case '1':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah ditambahkan.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil ditambahkan.<br>';
                             break; 
                         case '-1':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -58,7 +58,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                             break;
                         case '2':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah diedit.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil diedit.<br>';
                             break;
                         case '-2':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -66,7 +66,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                             break;
                         case '3':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah dihapus.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil dihapus.<br>';
                             break;
                         case '-3':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -80,7 +80,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                 } ?>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-body">
                 <form action="" method="POST" class="form-horizontal form-material">
                     <div class="form-row pb-2">

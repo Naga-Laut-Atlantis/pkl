@@ -31,14 +31,14 @@
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
-    <div class="row">
+    <div class="row"> <!-- Alert setelah add, edit & delete -->
       <div class="col-sm-12">
         <?php
         if (isset($_GET['success'])) {
           switch ($_GET['success']) {
             case '1':
               echo '<div class="alert alert-success alert-dismissible fade show">
-                    <strong>Sukses!</strong> Barang telah ditambahkan.<br>';
+                    <strong>Sukses!</strong> Barang berhasil ditambahkan.<br>';
               break; 
             case '-1':
               echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -46,7 +46,7 @@
               break;
             case '2':
               echo '<div class="alert alert-success alert-dismissible fade show">
-                    <strong>Sukses!</strong> Data Barang telah diedit.<br>';
+                    <strong>Sukses!</strong> Data Barang berhasil diedit.<br>';
               break;
             case '-2':
               echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -54,11 +54,19 @@
               break;
             case '3':
               echo '<div class="alert alert-success alert-dismissible fade show">
-                    <strong>Sukses!</strong> Data Barang telah dihapus.<br>';
+                    <strong>Sukses!</strong> Data Barang berhasil dihapus.<br>';
               break;
             case '-3':
               echo '<div class="alert alert-danger alert-dismissible fade show">
                     <strong>Gagal!</strong> Data Barang gagal dihapus.<br>';
+              break;
+            case '4':
+              echo '<div class="alert alert-success alert-dismissible fade show">
+                    <strong>Sekses!</strong> Data Barang berhasil diimpor.<br>';
+              break;
+            case '-4':
+              echo '<div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> = '.$_GET['dberror'].'<br>';
               break;
           }  
           echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">

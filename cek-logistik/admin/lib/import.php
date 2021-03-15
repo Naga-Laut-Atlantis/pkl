@@ -22,7 +22,7 @@ if(isset($_FILES['myfile']['name']) && in_array($_FILES['myfile']['type'], $file
     $spreadsheet = $reader->load($_FILES['myfile']['tmp_name']);
      
     $sheetData = $spreadsheet->getActiveSheet()->toArray();
-	for($i = 0;$i < count($sheetData);$i++)
+	for($i = 2;$i < count($sheetData);$i++)
 	{
         $kode_brg = $sheetData[$i]['0'];
         $jenis_brg = $sheetData[$i]['1'];
@@ -34,11 +34,14 @@ if(isset($_FILES['myfile']['name']) && in_array($_FILES['myfile']['type'], $file
                     '".$lokasi."', '".$pic."') ");
     }
     if (!$result) {
-        die ("could not query the database: <br>".$db->error);
+        // die ("could not query the database: <br>".$db->error);
+        // close connection
+        // $db->close();
+        header('Location: ../tabel-barang.php?success=-4&dberror='.$db->error);
       }else {
         // close connection
         $db->close();
-        header('Location: ../tabel-barang.php');
+        header('Location: ../tabel-barang.php?success=4');
       }
 }
 ?>

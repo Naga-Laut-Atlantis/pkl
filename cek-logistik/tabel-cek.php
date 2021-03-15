@@ -21,6 +21,18 @@
 <?php require_once "lib/topbar.php"; ?>
 <?php require_once "lib/sidebar.php"; ?>
 <!-- ============================================================== -->
+<!-- Set Tanggal  -->
+<!-- ============================================================== -->
+<?php
+setlocale(LC_ALL, 'id-ID', 'id_ID.utf8');
+if (isset($_POST['submit'])) {
+    $tanggal_awal = $_POST['tanggal-awal'];
+    $tanggal_akhir = $_POST['tanggal-akhir'];
+}
+$tglSekarang = date('Y-m-d');
+$bulanLalu = date("Y-m-d", strtotime("-1 Months"));
+?>
+<!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
 <div class="page-wrapper">
@@ -38,7 +50,7 @@
                     switch ($_GET['success']) {
                         case '1':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah ditambahkan.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil ditambahkan.<br>';
                             break; 
                         case '-1':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -46,7 +58,7 @@
                             break;
                         case '2':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah diedit.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil diedit.<br>';
                             break;
                         case '-2':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -54,7 +66,7 @@
                             break;
                         case '3':
                             echo '<div class="alert alert-success alert-dismissible fade show">
-                                    <strong>Sukses!</strong> Cek Barang telah dihapus.<br>';
+                                    <strong>Sukses!</strong> Cek Barang berhasil dihapus.<br>';
                             break;
                         case '-3':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
@@ -68,63 +80,91 @@
                 } ?>
             </div>
         </div>
-        <div class="row">
-            <!-- column -->
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title d-inline" style="font-size: 200%;">Tabel Cek Peralatan Logistik</h4>
-                        <a href="add-cek.php" type="button" class="btn btn-primary float-right d-inline-block" style="font-size: 120%"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
-                        <div class="table-responsive-sm">
-                            <table class="table user-table" style="table-layout: auto;">
-                                <thead>
-                                    <tr>
-                                        <th class="border-top-0">Kode Peralatan</th>
-                                        <th class="border-top-0">Jenis Barang</th>
-                                        <th class="border-top-0">Nama Barang</th>
-                                        <th class="border-top-0">Tahun</th>
-                                        <th class="border-top-0">Lokasi</th>
-                                        <th class="border-top-0">PIC</th>
-                                        <th class="border-top-0">Tanggal Cek</th>
-                                        <th class="border-top-0">Kondisi</th>
-                                        <th class="border-top-0">Keterangan</th>
-                                        <th class="border-top-0">Action</th>
-                                    <tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    // execute query
-                                    $result = $db->query(" SELECT * FROM cek WHERE pic='".$_SESSION['kode']."' ORDER BY tgl_cek DESC");
-                                    if (!$result) {
-                                        die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
-                                    }
-                                    while ($row = $result->fetch_object()) {
-                                        echo '<tr>';
-                                        echo '<td>'.$row->kode_brg.'</td>';
-                                        echo '<td>'.$row->jenis_brg.'</td>';
-                                        echo '<td>'.$row->nama_brg.'</td>';
-                                        echo '<td>'.$row->tahun.'</td>';
-                                        echo '<td>'.$row->lokasi.'</td>';
-                                        echo '<td>'.$row->pic.'</td>';
-                                        echo '<td>'.$row->tgl_cek.'</td>';
-                                        echo '<td>'.$row->kondisi.'</td>';
-                                        echo '<td>'.$row->keterangan.'</td>';
-                                        echo '<td>
-                                                <div class="btn-group-vertical">
-                                                    <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#fotoModal" data-whatever="'.$row->foto.'">Foto</button>
-                                                    <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning text-white">Edit</a>
-                                                    <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
-                                                </div>
-                                              </td>';
-                                        echo '</tr>';
-                                    }
-                                    $result->free();
-                                    $db->close();
-                                ?>
-                                </tbody>
-                            </table>
+        <div class="card mb-3">
+            <div class="card-body">
+                <form action="" method="POST" class="form-horizontal form-material">
+                    <div class="form-row pb-2">
+                        <div class="form-group col-md-3 mr-2">
+                            <label for="tanggal-awal">Dari Tanggal</label>
+                            <input type="date" name="tanggal-awal" id="tanggal-awal" class="form-control form-control-line" value="<?php if (isset($tanggal_awal)) {
+                                                                                                                                        echo $tanggal_awal;
+                                                                                                                                    } else {
+                                                                                                                                        echo $bulanLalu;
+                                                                                                                                    } ?>">
+                        </div>
+                        <div class="form-group col-md-3 mr-2">
+                            <label for="tanggal-awal">Sampai Tanggal</label>
+                            <input type="date" name="tanggal-akhir" id="tanggal-akhir" class="form-control form-control-line" value="<?php if (isset($tanggal_akhir)) {
+                                                                                                                                        echo $tanggal_akhir;
+                                                                                                                                    } else {
+                                                                                                                                        echo $tglSekarang;
+                                                                                                                                    } ?>">
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            <button type="submit" class="btn btn-primary" id="submit" name="submit" style="font-size: 120%;">Tampil</button>
+                        </div>
+                        <div class="col-md-3 my-auto">
+                            <a href="add-cek.php" type="button" class="btn btn-primary float-right d-inline-block float-right" style="font-size: 130%;"><i class="fas fa-plus"></i>&nbsp;Cek Peralatan</a>
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center" style="font-size: 200%;">Tabel Cek Peralatan Logistik</h4>
+                <div class="table-responsive-sm">
+                    <table class="table user-table" id="tabel-cek" style="table-layout: auto;">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">Kode Peralatan</th>
+                                <th class="border-top-0">Jenis Barang</th>
+                                <th class="border-top-0">Nama Barang</th>
+                                <th class="border-top-0">Tahun</th>
+                                <th class="border-top-0">Lokasi</th>
+                                <th class="border-top-0">PIC</th>
+                                <th class="border-top-0">Tanggal Cek</th>
+                                <th class="border-top-0">Kondisi</th>
+                                <th class="border-top-0">Keterangan</th>
+                                <th class="border-top-0">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            if (isset($tanggal_awal)) {
+                                $query = " SELECT * FROM cek WHERE pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$tanggal_awal."' AND '".$tanggal_akhir."' ORDER BY tgl_cek DESC ";
+                            } else {
+                                $query = " SELECT * FROM cek WHERE pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$bulanLalu."' AND '".$tglSekarang."' ORDER BY tgl_cek DESC ";
+                            }
+                            $result = $db->query($query);
+                            if (!$result) {
+                                die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
+                            }
+                            while ($row = $result->fetch_object()) { 
+                                echo '<tr>';
+                                    echo '<td>'.$row->kode_brg.'</td>';
+                                    echo '<td>'.$row->jenis_brg.'</td>';
+                                    echo '<td>'.$row->nama_brg.'</td>';
+                                    echo '<td>'.$row->tahun.'</td>';
+                                    echo '<td>'.$row->lokasi.'</td>';
+                                    echo '<td>'.$row->pic.'</td>';
+                                    echo '<td>'.$row->tgl_cek.'</td>';
+                                    echo '<td>'.$row->kondisi.'</td>';
+                                    echo '<td>'.$row->keterangan.'</td>';
+                                    echo '<td>
+                                            <div class="btn-group-vertical">
+                                                <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#fotoModalAdmin" data-whatever="'.$row->foto.'">Foto</button>
+                                                <a href="edit-cek.php?kode_brg='.$row->kode_brg.'&tgl='.$row->tgl_cek.'" type="button" class="btn btn-warning text-white ">Edit</a>
+                                                <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModal" data-whatever="'.$row->kode_brg.'" data-whatever1="'.$row->tgl_cek.'">Hapus</button>
+                                            </div>
+                                          </td>';
+                                echo '</tr>';
+                            }
+                            $result->free();
+                            $db->close();
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
