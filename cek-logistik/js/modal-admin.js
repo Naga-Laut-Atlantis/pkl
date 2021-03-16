@@ -48,3 +48,12 @@ function getBarang(kode) {
           $('#error-kode').text(obj.error);
   }});
 }
+
+// script alert auto hide
+$(document).ready(function () {
+  window.setTimeout(function () {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).alert('close');
+      });
+  }, 4000);
+});

@@ -7,7 +7,7 @@
     header('Location: ../login.php');
   }else {
     if($_SESSION['role'] == 'PIC'){
-      header('Location: ../');
+      header('Location: ../tabel-cek.php');
     }
   }
 ?>
@@ -62,7 +62,7 @@
               break;
             case '4':
               echo '<div class="alert alert-success alert-dismissible fade show">
-                    <strong>Sekses!</strong> Data Barang berhasil diimpor.<br>';
+                    <strong>Sukses!</strong> Data Barang berhasil diimpor.<br>';
               break;
             case '-4':
               echo '<div class="alert alert-danger alert-dismissible fade show">

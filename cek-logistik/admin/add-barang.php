@@ -7,7 +7,7 @@ if (!isset($_SESSION['kode'])) { // cek session
   header('Location: ../login.php');
 }else {
   if($_SESSION['role'] == 'PIC'){
-      header('Location: ../');
+      header('Location: ../tabel-cek.php');
   }
 }
 require_once 'lib/db_login.php';

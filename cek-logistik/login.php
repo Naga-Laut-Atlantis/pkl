@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
             $_SESSION['role'] = $row->jabatan;
             $result->free();
             if ($row->jabatan == 'PIC') {
-                header('Location: ./');
+                header('Location: tabel-cek.php');
             }else {
                 header('Location: admin/');
             }

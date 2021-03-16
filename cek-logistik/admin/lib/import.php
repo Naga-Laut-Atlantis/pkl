@@ -24,12 +24,12 @@ if(isset($_FILES['myfile']['name']) && in_array($_FILES['myfile']['type'], $file
     $sheetData = $spreadsheet->getActiveSheet()->toArray();
 	for($i = 2;$i < count($sheetData);$i++)
 	{
-        $kode_brg = $sheetData[$i]['0'];
-        $jenis_brg = $sheetData[$i]['1'];
-        $nama_brg = $sheetData[$i]['2'];
-        $tahun = $sheetData[$i]['3'];
-        $lokasi = $sheetData[$i]['4'];
-        $pic = $sheetData[$i]['5'];
+        $kode_brg = $db->real_escape_string($sheetData[$i]['0']);
+        $jenis_brg = $db->real_escape_string($sheetData[$i]['1']);
+        $nama_brg = $db->real_escape_string($sheetData[$i]['2']);
+        $tahun = $db->real_escape_string($sheetData[$i]['3']);
+        $lokasi = $db->real_escape_string($sheetData[$i]['4']);
+        $pic = $db->real_escape_string($sheetData[$i]['5']);
         $result = $db->query(" INSERT INTO barang VALUES ('".$kode_brg."', '".$jenis_brg."', '".$nama_brg."', '".$tahun."', 
                     '".$lokasi."', '".$pic."') ");
     }

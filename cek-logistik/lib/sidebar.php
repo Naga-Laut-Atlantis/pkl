@@ -8,9 +8,9 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <!-- User Profile-->
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                    <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="./" aria-expanded="false"><i class="mr-3 far fa-clock fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                                aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li> -->
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="tabel-cek.php" aria-expanded="false"><i class="mr-3 fa fa-table"
                                 aria-hidden="true"></i><span class="hide-menu">Tabel Cek Peralatan</span></a></li>
