@@ -39,7 +39,7 @@
             <!-- End Logo -->
             <!-- ============================================================== -->
             <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                <ul class="navbar-nav d-none d-md-block d-lg-none">
+                <ul class="navbar-nav d-none d-sm-block d-md-none">
                     <li class="nav-item">
                         <a class="nav-toggler nav-link waves-effect waves-light text-white"
                             href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
