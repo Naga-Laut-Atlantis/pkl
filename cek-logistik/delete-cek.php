@@ -25,11 +25,11 @@
         // die ("Could not query the database: <br>".$db->error);
         $result_foto->free();
         $db->close();
-        header('Location: tabel-cek.php?success=-3');
+        header('Location: ./?success=-3');
     }else {
         $result_foto->free();
         $db->close();
-        header('Location: tabel-cek.php?success=3');
+        header('Location: ./?success=3');
     }
     #close db connection
     $db->close();

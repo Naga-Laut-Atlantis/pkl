@@ -7,7 +7,7 @@
         header('Location: ../login.php');
     }else {
         if($_SESSION['role'] == 'PIC'){
-            header('Location: ../tabel-cek.php');
+            header('Location: ../');
         }
     }
 ?>
@@ -55,6 +55,10 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                         case '-1':
                             echo '<div class="alert alert-danger alert-dismissible fade show">
                                     <strong>Gagal!</strong> Cek Barang gagal ditambahkan.<br>';
+                            break;
+                        case '-11':
+                            echo '<div class="alert alert-danger alert-dismissible fade show">
+                                    <strong>Gagal!</strong> Cek Barang gagal ditambahkan. Kode Barang tidak ditemukan. <br>';
                             break;
                         case '2':
                             echo '<div class="alert alert-success alert-dismissible fade show">

@@ -7,7 +7,7 @@ if (!isset($_SESSION['kode'])) { // cek session
     header('Location: ../login.php');
 }else {
     if($_SESSION['role'] == 'PIC'){
-        header('Location: ../tabel-cek.php');
+        header('Location: ../');
     }
 }
 require_once 'lib/db_login.php';
@@ -89,7 +89,7 @@ if (!isset($_POST['submit'])) {
                     <div class="form-row mb-3">
                         <div class="form-group col-md-5">
                             <label for="kode_brg">Kode Peralatan</label>
-                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" value="<?php echo $kode_brg; ?>" required>
+                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" value="<?php echo $kode_brg; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="pic">PIC</label>

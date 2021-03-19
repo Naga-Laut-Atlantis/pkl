@@ -7,7 +7,7 @@
     header('Location: ../login.php');
   }else {
     if($_SESSION['role'] == 'PIC'){
-      header('Location: ../tabel-cek.php');
+      header('Location: ../');
     }
   }
 ?>
@@ -66,7 +66,7 @@
               break;
             case '-4':
               echo '<div class="alert alert-danger alert-dismissible fade show">
-                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> = '.$_GET['dberror'].'<br>';
+                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> Data barang sudah ada <br>';
               break;
           }  
           echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">

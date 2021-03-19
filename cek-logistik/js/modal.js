@@ -44,5 +44,5 @@ $(document).ready(function () {
         $(".alert").fadeTo(500, 0).slideUp(500, function(){
             $(this).alert('close');
         });
-    }, 4000);
+    }, 3500);
 });

@@ -7,7 +7,7 @@ if (!isset($_SESSION['kode'])) { // cek session
     header('Location: ../login.php');
 }else {
     if($_SESSION['role'] == 'PIC'){
-        header('Location: ../tabel-cek.php');
+        header('Location: ../');
     }
 }
 require_once 'lib/db_login.php';
@@ -53,22 +53,29 @@ if (isset($_POST['submit'])) {
         $keterangan = $db->real_escape_string($keterangan);
         $foto = $db->real_escape_string($_FILES['foto']['name']);
 
-        // Pindahkan gambar ke direktori target
-        move_uploaded_file($_FILES['foto']['tmp_name'], $target_file);
-
-        // execute query
-        $result = $db->query(" INSERT INTO cek VALUES ('".$kode_brg."','".$jenis."','".$nama."','".$tahun."','".$lokasi."'
-        ,'".$pic."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
-
-        if (!$result) {
-            // die ("could not query the database: <br>".$db->error);
-            // close connection
+        // cek apakah barang ada di database
+        $cek_kode = $db->query(" SELECT * FROM barang WHERE kode_brg = '".$kode_brg."' ");
+        if ($cek_kode->num_rows == 0) {
             $db->close();
-            header('Location: tabel-cek.php?success=-1');
+            header('Location: tabel-cek.php?success=-11');
         }else {
-            // close connection
-            $db->close();
-            header('Location: tabel-cek.php?success=1');
+            // Pindahkan gambar ke direktori target
+            move_uploaded_file($_FILES['foto']['tmp_name'], $target_file);
+    
+            // execute query
+            $result = $db->query(" INSERT INTO cek VALUES ('".$kode_brg."','".$jenis."','".$nama."','".$tahun."','".$lokasi."'
+            ,'".$pic."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
+    
+            if (!$result) {
+                // die ("could not query the database: <br>".$db->error);
+                // close connection
+                $db->close();
+                header('Location: tabel-cek.php?success=-1');
+            }else {
+                // close connection
+                $db->close();
+                header('Location: tabel-cek.php?success=1');
+            }
         }
     }
 }
@@ -105,7 +112,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group col-md-4">
                             <label for="pic">PIC</label>
-                            <input type="text" class="form-control" id="pic" name="pic" value="" required>
+                            <input type="text" class="form-control" id="pic" name="pic" value="" readonly required>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="tanggal">Tanggal Cek</label>
@@ -115,25 +122,28 @@ if (isset($_POST['submit'])) {
                     <div class="form-row mb-3">
                         <div class="form-group col-md-4">
                             <label for="jenis">Jenis Barang</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" value="" required>
+                            <input type="text" class="form-control" id="jenis" name="jenis" value="" readonly required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nama">Nama Barang</label>
-                            <input type="text" class="form-control" id="nama" name="nama" value="" required>
+                            <input type="text" class="form-control" id="nama" name="nama" value="" readonly required>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="lokasi">Lokasi</label>
-                            <input type="text" class="form-control" id="lokasi" name="lokasi" value="" required>
+                            <input type="text" class="form-control" id="lokasi" name="lokasi" value="" readonly required>
                         </div>
                         <div class="form-group col-md-1">
                             <label for="tahun">Tahun</label>
-                            <input type="text" class="form-control" id="tahun" name="tahun" value="" required>
+                            <input type="text" class="form-control" id="tahun" name="tahun" value="" readonly required>
                         </div>
                     </div>
                     <div class="form-row mb-1">
                         <div class="form-group col-md-4">
                             <label for="kondisi">Kondisi</label>
-                            <input type="text" class="form-control" id="kondisi" name="kondisi" required>
+                            <select name="kondisi" id="kondisi" class="form-control">
+                                <option value="Bagus">Bagus</option>
+                                <option value="Rusak">Rusak</option>
+                            </select>
                         </div>
                         <div class="col-md-2"></div>
                         <div class="form-group col-md-6">

@@ -5,7 +5,7 @@
         header('Location: ../login.php');
     }else {
         if($_SESSION['role'] == 'PIC'){
-            header('Location: ../tabel-cek.php');
+            header('Location: ../');
         }
     }
 

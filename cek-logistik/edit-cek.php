@@ -103,11 +103,11 @@ if (!isset($_POST['submit'])) {
             // die ("could not query the database: <br>".$db->error);
             // close connection
             $db->close();
-            header('Location: tabel-cek.php?success=-2');
+            header('Location: ./?success=-2');
         }else {
             // close connection
             $db->close();
-            header('Location: tabel-cek.php?success=2');
+            header('Location: ./?success=2');
         }
     }
 }
@@ -139,39 +139,42 @@ if (!isset($_POST['submit'])) {
                     <div class="form-row mb-3">
                         <div class="form-group col-md-5">
                             <label for="kode_brg">Kode Peralatan</label>
-                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" value="<?php echo $kode_brg; ?>" required>
+                            <input type="text" class="form-control" id="kode_brg" name="kode_brg" value="<?php echo $kode_brg; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="pic">PIC</label>
-                            <input type="text" class="form-control" id="pic" name="pic" value="<?php echo $pic; ?>" required>
+                            <input type="text" class="form-control" id="pic" name="pic" value="<?php echo $pic; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="tanggal">Tanggal Cek</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo $tanggal; ?>" required>
+                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo $tanggal; ?>" readonly required>
                         </div>
                     </div>
                     <div class="form-row mb-3">
                         <div class="form-group col-md-4">
                             <label for="jenis">Jenis Barang</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" value="<?php echo $jenis; ?>" required>
+                            <input type="text" class="form-control" id="jenis" name="jenis" value="<?php echo $jenis; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nama">Nama Barang</label>
-                            <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $nama; ?>" required>
+                            <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $nama; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="lokasi">Lokasi</label>
-                            <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo $lokasi; ?>" required>
+                            <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo $lokasi; ?>" readonly required>
                         </div>
                         <div class="form-group col-md-1">
                             <label for="tahun">Tahun</label>
-                            <input type="text" class="form-control" id="tahun" name="tahun" value="<?php echo $tahun; ?>" required>
+                            <input type="text" class="form-control" id="tahun" name="tahun" value="<?php echo $tahun; ?>" readonly required>
                         </div>
                     </div>
                     <div class="form-row mb-1">
                         <div class="form-group col-md-4">
                             <label for="kondisi">Kondisi</label>
-                            <input type="text" class="form-control" id="kondisi" name="kondisi" value="<?php echo $kondisi; ?>" required>
+                            <select name="kondisi" id="kondisi" class="form-control">
+                                <option value="Bagus" <?php echo ($kondisi=='Bagus') ? 'selected':'' ?>>Bagus</option>
+                                <option value="Rusak" <?php echo ($kondisi=='Rusak') ? 'selected':'' ?>>Rusak</option>
+                            </select>
                         </div>
                         <div class="col-md-2"></div>
                         <div class="form-group col-md-6">
@@ -188,7 +191,7 @@ if (!isset($_POST['submit'])) {
                         <div class="col-md-6"></div>
                         <div class="col-md-2 align-self-end">
                             <button type="submit" class="btn btn-primary d-inline-block mr-3" name="submit" value="submit">Submit</button>
-                            <a href="tabel-cek.php" class="btn btn-danger d-inline-block">Cancel</a>
+                            <a href="./" class="btn btn-danger d-inline-block">Cancel</a>
                         </div>
                     </div>
                     <br>

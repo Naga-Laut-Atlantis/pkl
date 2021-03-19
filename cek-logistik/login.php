@@ -4,6 +4,14 @@
 <?php
 // Login untuk mendapat session user
 session_start(); // inisialisasi sesssion
+if (isset($_SESSION['kode'])) { // cek session
+    if($_SESSION['role'] == 'PIC'){
+        header('Location: ./');
+    }else {
+        header('Location: admin/');
+    }
+}
+
 require_once 'lib/db_login.php';
 
 if (isset($_POST["submit"])) {
@@ -22,7 +30,7 @@ if (isset($_POST["submit"])) {
             $_SESSION['role'] = $row->jabatan;
             $result->free();
             if ($row->jabatan == 'PIC') {
-                header('Location: tabel-cek.php');
+                header('Location: ./');
             }else {
                 header('Location: admin/');
             }

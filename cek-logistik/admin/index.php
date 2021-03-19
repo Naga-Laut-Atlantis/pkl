@@ -7,7 +7,7 @@
         header('Location: ../login.php');
     }else {
         if($_SESSION['role'] == 'PIC'){
-            header('Location: ../tabel-cek.php');
+            header('Location: ../');
         }
     }
 ?>
@@ -31,7 +31,7 @@
         <!-- ============================================================== -->
         <!-- Sales chart -->
         <!-- ============================================================== -->
-        <div class="row">
+        <div class="row justify-content-center">
             <!-- Column -->
             <div class="col-sm-6">
                 <div class="card">
@@ -39,7 +39,7 @@
                         <h4 class="card-title">Jumlah Peralatan Logistik</h4>
                         <div class="text-right">
                         <?php
-                            $result_brg = $db->query(" SELECT COUNT(kode_brg) as count FROM barang ");
+                            $result_brg = $db->query(" SELECT COUNT(*) as count FROM cek");
                             $jumlah_brg = $result_brg->fetch_object();
                         ?>
                             <h2 class="font-light m-b-0"><i class="ti-dropbox text-info mr-2"></i><?php echo $jumlah_brg->count; ?></h2>
@@ -52,42 +52,32 @@
                 </div>
             </div>
             <!-- Column -->
-            <!-- Column -->
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Data Cek Peralatan Logistik</h4>
-                        <div class="text-right">
-                        <?php
-                            $result_cek = $db->query(" SELECT COUNT(*) as count FROM cek ");
-                            $jumlah_cek = $result_cek->fetch_object();
-                        ?>
-                            <h2 class="font-light m-b-0"><i class="ti-check-box text-success mr-2"></i><?php echo $jumlah_cek->count; ?></h2>
-                            <span class="text-muted">Total Cek</span>
-                        </div>
-                        <div class="progress mt-3">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%; height: 6px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Column -->
         </div>
         <div class="row">
             <!-- Column -->
             <?php
-                $result = $db->query(" SELECT jenis_brg, COUNT(*) as count FROM barang GROUP BY jenis_brg ");
+                $result = $db->query(" SELECT jenis_brg FROM barang GROUP BY jenis_brg ");
                 if (!$result) {
                     die ("Could not query the database: <br>".$db->error);
                 }
                 while ($row = $result->fetch_object()) {
+                    $result_count = $db->query(" SELECT COUNT(DISTINCT nama_brg) as count FROM cek WHERE jenis_brg='".$row->jenis_brg."' GROUP BY kondisi ORDER BY kondisi ");
+                    $i = 0;
+                    while($row_count = $result_count->fetch_object()) { 
+                        $count[$i] = $row_count->count;
+                        $i++;
+                    }
                     echo '<div class="col-sm-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Jumlah '.$row->jenis_brg.'</h4>
-                                    <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-dropbox text-secondary mr-2"></i>'.$row->count.'</h2>
-                                        <span class="text-muted" style="font-size: 90%;">Data Peralatan Logistik per Jenis</span>
+                                    <div class="d-inline-block mx-5">
+                                        <h2 class="font-light m-b-0"><i class="ti-dropbox text-success mr-2"></i>'.$count[0].'</h2>
+                                        <span class="text-muted" style="font-size: 90%;">Bagus</span>
+                                    </div>
+                                    <div class="d-inline-block mx-5">
+                                        <h2 class="font-light m-b-0"><i class="ti-dropbox text-danger mr-2"></i>'.$count[1].'</h2>
+                                        <span class="text-muted" style="font-size: 90%;">Rusak</span>
                                     </div>
                                     <div class="progress mt-3">
                                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%; height: 6px;"></div>
@@ -95,6 +85,9 @@
                                 </div>
                             </div>
                         </div>';
+                    $i = 0;
+                    $count[0] = 0;
+                    $count[1] = 0;
                 }
             ?>
         </div>
