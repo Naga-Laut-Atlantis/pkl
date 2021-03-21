@@ -39,7 +39,7 @@
                         <h4 class="card-title">Jumlah Peralatan Logistik</h4>
                         <div class="text-right">
                         <?php
-                            $result_brg = $db->query(" SELECT COUNT(*) as count FROM cek");
+                            $result_brg = $db->query(" SELECT COUNT(*) as count FROM barang");
                             $jumlah_brg = $result_brg->fetch_object();
                         ?>
                             <h2 class="font-light m-b-0"><i class="ti-dropbox text-info mr-2"></i><?php echo $jumlah_brg->count; ?></h2>
@@ -61,11 +61,21 @@
                     die ("Could not query the database: <br>".$db->error);
                 }
                 while ($row = $result->fetch_object()) {
-                    $result_count = $db->query(" SELECT COUNT(DISTINCT nama_brg) as count FROM cek WHERE jenis_brg='".$row->jenis_brg."' GROUP BY kondisi ORDER BY kondisi ");
-                    $i = 0;
-                    while($row_count = $result_count->fetch_object()) { 
-                        $count[$i] = $row_count->count;
-                        $i++;
+                    $result_nama = $db->query(" SELECT nama_brg FROM barang WHERE jenis_brg='".$row->jenis_brg."' ");
+                    $count[0] = 0;
+                    $count[1] = 0;
+                    while($row_nama = $result_nama->fetch_object()) {
+                        $result_kondisi = $db->query(" SELECT kondisi FROM cek WHERE nama_brg='".$row_nama->nama_brg."' ORDER BY tgl_cek DESC LIMIT 1 ");
+                        if ($result_kondisi->num_rows == 0) {
+                            $count[0]++;
+                        }else {
+                            $row_kondisi = $result_kondisi->fetch_object();
+                            if ($row_kondisi->kondisi == "Bagus") {
+                                $count[0]++;
+                            }else {
+                                $count[1]++;
+                            }
+                        }
                     }
                     echo '<div class="col-sm-4">
                             <div class="card">
@@ -85,9 +95,6 @@
                                 </div>
                             </div>
                         </div>';
-                    $i = 0;
-                    $count[0] = 0;
-                    $count[1] = 0;
                 }
             ?>
         </div>

@@ -86,7 +86,7 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
         </div>
         <div class="card mb-3">
             <div class="card-body">
-                <form action="" method="POST" class="form-horizontal form-material">
+                <form action="./" method="POST" class="form-horizontal form-material">
                     <div class="form-row pb-2">
                         <div class="form-group col-md-3 mr-2">
                             <label for="tanggal-awal">Dari Tanggal</label>
