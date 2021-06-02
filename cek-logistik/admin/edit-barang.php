@@ -83,7 +83,7 @@ if (!isset($_POST['submit'])) {
         <!-- ============================================================== -->
         <div class="card" style="margin-top: 3%; margin-bottom: 6%;">
             <div class="card-body">
-                <h4 class="card-title text-center">Edit Peralatan</h4>
+                <h3 class="card-title text-center">Edit Peralatan</h3>
                 <br>
                 <form method="POST" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]).'?kode_brg='.$kode_brg; ?>" enctype="multipart/form-data">
                     <div class="form-row mb-3">
