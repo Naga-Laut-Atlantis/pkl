@@ -109,7 +109,7 @@ if (isset($_POST["submit"])) {
                 <div class="card-body">
                     <form method="POST" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="kode" name="kode" value="" placeholder="Username" required>
+                            <input type="text" class="form-control" id="kode" name="kode" value="" placeholder="Kode Karyawan" required>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password" required>
