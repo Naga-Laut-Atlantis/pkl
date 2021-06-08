@@ -80,11 +80,31 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group col-md-4">
               <label for="pic">PIC</label>
-              <input type="text" class="form-control" id="pic" name="pic" value="" required>
+              <select name="pic" id="pic" class="form-control">
+              <?php
+                $query_user = " SELECT * FROM user WHERE jabatan='PIC' ";
+                $result_user = $db->query($query_user);
+                if(!$result_user){
+                    die ("Could not query the database: <br>".$db->error);
+                }
+                //Fetch and display the results
+                while ($row = $result_user->fetch_object()) {
+                    echo '<option value="'.$row->kode.'">'.$row->kode.'</option>';
+                }
+                $result_user->free();
+                $db->close();
+              ?>
+              </select>
             </div>
             <div class="form-group col-md-3">
               <label for="tahun">Tahun</label>
-              <input type="text" class="form-control" id="tahun" name="tahun" value="" required>
+              <select name="tahun" class="form-control" id="tahun">
+                <?php
+                for($i=date('Y'); $i>=date('Y')-30; $i-=1){
+                  echo '<option value="'.$i.'">'.$i.'</option>';
+                }
+                ?>
+              </select>
             </div>
           </div>
           <div class="form-row mb-3">
