@@ -40,6 +40,11 @@ if (isset($_POST['submit'])) {
         $valid = FALSE;
     }
 
+    if ($pic != $_SESSION['kode']){
+        $error_pic = "Maaf, Anda bukan penanggung jawab peralatan ini";
+        $valid = FALSE;
+    }
+
     if($valid){
         // escape inputs data
         $kode_brg = $db->real_escape_string($kode_brg);
@@ -59,9 +64,6 @@ if (isset($_POST['submit'])) {
             $db->close();
             header('Location: index.php?success=-11');
         }else {
-            // Pindahkan gambar ke direktori target
-            move_uploaded_file($_FILES['foto']['tmp_name'], $target_file);
-
             // execute query
             $result = $db->query(" INSERT INTO cek VALUES ('".$kode_brg."','".$jenis."','".$nama."','".$tahun."','".$lokasi."'
             ,'".$pic."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
@@ -72,6 +74,9 @@ if (isset($_POST['submit'])) {
                 $db->close();
                 header('Location: ./?success=-1');
             }else {
+                // Pindahkan gambar ke direktori target
+                move_uploaded_file($_FILES['foto']['tmp_name'], $target_file);
+
                 // close connection
                 $db->close();
                 header('Location: ./?success=1');
@@ -113,6 +118,7 @@ if (isset($_POST['submit'])) {
                         <div class="form-group col-md-4">
                             <label for="pic">PIC</label>
                             <input type="text" class="form-control" id="pic" name="pic" value="" readonly required>
+                            <div class="error mt-1" style="color: red;"><?php if (isset($error_pic)) echo $error_pic;?></div>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="tanggal">Tanggal Cek</label>
@@ -148,7 +154,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-2"></div>
                         <div class="form-group col-md-6">
                             <label for="keterangan">Keterangan</label>
-                            <textarea name="keterangan" id="keterangan" class="form-control" rows="3"></textarea>
+                            <textarea name="keterangan" id="keterangan" class="form-control" rows="3" required></textarea>
                         </div>
                     </div>
                     <div class="form-row">
