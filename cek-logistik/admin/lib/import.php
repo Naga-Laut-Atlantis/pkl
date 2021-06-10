@@ -37,11 +37,13 @@ if(isset($_FILES['myfile']['name']) && in_array($_FILES['myfile']['type'], $file
         // die ("could not query the database: <br>".$db->error);
         // close connection
         // $db->close();
-        header('Location: ../tabel-barang.php?success=-4');
+        header('Location: ../tabel-barang.php?success=-41');
       }else {
         // close connection
         $db->close();
         header('Location: ../tabel-barang.php?success=4');
       }
+}else {
+    header('Location: ../tabel-barang.php?success=-42');
 }
 ?>

@@ -64,9 +64,13 @@
               echo '<div class="alert alert-success alert-dismissible fade show">
                     <strong>Sukses!</strong> Data Barang berhasil diimpor.<br>';
               break;
-            case '-4':
+            case '-41':
               echo '<div class="alert alert-danger alert-dismissible fade show">
-                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> Data barang sudah ada <br>';
+                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> Data Barang sudah ada.<br>';
+              break;
+            case '-42':
+              echo '<div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Gagal!</strong> Data Barang gagal diimpor. <strong>Error</strong> Format file salah.<br>';
               break;
           }  
           echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
