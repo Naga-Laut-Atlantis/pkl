@@ -179,7 +179,7 @@ if (!isset($_POST['submit'])) {
                         <div class="col-md-2"></div>
                         <div class="form-group col-md-6">
                             <label for="keterangan">Keterangan</label>
-                            <textarea name="keterangan" id="keterangan" class="form-control" rows="3"><?php echo $keterangan; ?></textarea>
+                            <textarea name="keterangan" id="keterangan" class="form-control" rows="3" required><?php echo $keterangan; ?></textarea>
                         </div>
                     </div>
                     <div class="form-row">

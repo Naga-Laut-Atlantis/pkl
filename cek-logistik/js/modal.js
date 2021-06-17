@@ -21,6 +21,11 @@ $('#fotoModal').on('show.bs.modal', function (event) {
     modal.find('img').attr("src", dir+recipient)
 })
 
+// script untuk menghapus keterangan ketika kondisi berubah
+$('#kondisi').change(function() {
+    $('#keterangan').text("");
+  });
+
 // script ajax
 function getBarang(kode) {
     $.ajax({
