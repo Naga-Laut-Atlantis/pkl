@@ -23,8 +23,8 @@ $('#fotoModal').on('show.bs.modal', function (event) {
 
 // script untuk menghapus keterangan ketika kondisi berubah
 $('#kondisi').change(function() {
-    $('#keterangan').text("");
-  });
+    $('#keterangan').val("");
+});
 
 // script ajax
 function getBarang(kode) {

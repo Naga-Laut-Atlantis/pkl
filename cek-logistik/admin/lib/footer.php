@@ -5,8 +5,10 @@
     <!-- ============================================================== -->
     <!-- All Scripts -->
     <!-- ============================================================== -->
-    <!-- Jquery -->
+    <!-- JQuery -->
     <script src="../../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <!-- JQuery UI -->
+    <script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../../assets/plugins/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>

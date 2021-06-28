@@ -1,4 +1,13 @@
-<?php 
+<?php
+session_start(); // resume session
+if (!isset($_SESSION['kode'])) { // cek session
+  header('Location: ../../login.php');
+}else {
+  if($_SESSION['role'] == 'PIC'){
+      header('Location: ../../');
+  }
+}
+
 require_once('db_login.php');
 
 $kode = $_GET['kode'];

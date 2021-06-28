@@ -33,8 +33,10 @@ $('#fotoModalAdmin').on('show.bs.modal', function (event) {
 })
 
 // script untuk menghapus keterangan ketika kondisi berubah
-$('#kondisi').change(function() {
-  $('#keterangan').text("");
+$(document).ready(function () {
+  $('#kondisi').change(function () {
+    $('#keterangan').val("");
+  });
 });
 
 // script ajax
@@ -61,4 +63,12 @@ $(document).ready(function () {
           $(this).alert('close');
       });
   }, 3500);
+});
+
+//script autocomplete jquery
+$(function() {
+  $("#jenis").autocomplete({
+     source: "lib/response_jenis.php",
+     minLength: 2
+  });
 });
