@@ -65,8 +65,7 @@ if (isset($_POST['submit'])) {
             header('Location: index.php?success=-11');
         }else {
             // execute query
-            $result = $db->query(" INSERT INTO cek VALUES ('".$kode_brg."','".$jenis."','".$nama."','".$tahun."','".$lokasi."'
-            ,'".$pic."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
+            $result = $db->query(" INSERT INTO cek VALUES ('".$kode_brg."','".$tanggal."','".$kondisi."','".$keterangan."','".$foto."') ");
     
             if (!$result) {
                 // die ("could not query the database: <br>".$db->error);
