@@ -1,6 +1,6 @@
 <?php
 $db_host='localhost';
-$db_database='logistik_new';
+$db_database='logistik';
 $db_username='root';
 $db_password='';
 
