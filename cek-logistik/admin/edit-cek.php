@@ -15,7 +15,7 @@ $kode_brg = $_GET['kode_brg']; // Get kode dari header http atau url
 $tanggal = $_GET['tgl']; // Get kode dari header http atau url
 
 if (!isset($_POST['submit'])) {
-    $result = $db->query(" SELECT * FROM cek WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
+    $result = $db->query(" SELECT * FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE cek.kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
     if (!$result) {
         die ("could not query the database: <br>".$db->error);
     }else {
@@ -90,13 +90,11 @@ if (!isset($_POST['submit'])) {
 
         // execute query
         if ($foto_valid) { // jika foto diganti
-            $result = $db->query(" UPDATE cek SET jenis_brg='".$jenis."', nama_brg='".$nama."',
-                                tahun='".$tahun."', lokasi='".$lokasi."', pic='".$pic."', kondisi='".$kondisi."',
-                                keterangan='".$keterangan."', foto='".$foto."' WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
+            $result = $db->query(" UPDATE cek SET kondisi='".$kondisi."', keterangan='".$keterangan."', foto='".$foto."' 
+                                    WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
         } else { //jika foto tidak diganti
-            $result = $db->query(" UPDATE cek SET jenis_brg='".$jenis."', nama_brg='".$nama."',
-                                tahun='".$tahun."', lokasi='".$lokasi."', pic='".$pic."', kondisi='".$kondisi."',
-                                keterangan='".$keterangan."' WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
+            $result = $db->query(" UPDATE cek SET kondisi='".$kondisi."', keterangan='".$keterangan."'
+                                    WHERE kode_brg='".$kode_brg."' AND tgl_cek='".$tanggal."' ");
         }
 
         if (!$result) {

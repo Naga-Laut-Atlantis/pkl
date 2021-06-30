@@ -65,7 +65,7 @@
                     $count[0] = 0;
                     $count[1] = 0;
                     while($row_nama = $result_nama->fetch_object()) {
-                        $result_kondisi = $db->query(" SELECT kondisi FROM cek WHERE nama_brg='".$row_nama->nama_brg."' ORDER BY tgl_cek DESC LIMIT 1 ");
+                        $result_kondisi = $db->query(" SELECT kondisi FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE nama_brg='".$row_nama->nama_brg."' ORDER BY tgl_cek DESC LIMIT 1 ");
                         if ($result_kondisi->num_rows == 0) {
                             $count[0]++;
                         }else {
