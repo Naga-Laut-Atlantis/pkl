@@ -117,7 +117,7 @@
                   die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
               }
               while ($row = $result->fetch_object()) { 
-                echo '<tr>';
+                print_r('<tr>');
                   echo '<td>'.$row->kode_brg.'</td>';
                   echo '<td>'.$row->jenis_brg.'</td>';
                   echo '<td>'.$row->nama_brg.'</td>';
@@ -130,7 +130,7 @@
                             <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModalBarang" data-whatever="'.$row->kode_brg.'">Hapus</button>
                           </div>
                         </td>';
-                echo '</tr>';
+                print_r('<tr>');
               }
               $result->free();
               $db->close();
