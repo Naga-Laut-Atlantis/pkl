@@ -12,7 +12,7 @@ $(function() {
         } else {
             // do that    
         }    
-    };
+    }
 
     handlenavbarbg();
-})
+});
