@@ -130,7 +130,7 @@
                             <button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#hapusModalBarang" data-whatever="'.$row->kode_brg.'">Hapus</button>
                           </div>
                         </td>';
-                print_r('<tr>');
+                print_r('</tr>');
               }
               $result->free();
               $db->close();
