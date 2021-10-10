@@ -99,9 +99,9 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                         <div class="form-group col-md-3 mr-2">
                             <label for="tanggal-awal">Sampai Tanggal</label>
                             <input type="date" name="tanggal-akhir" id="tanggal-akhir" class="form-control form-control-line" value="<?php if (isset($tanggal_akhir)) {
-                                                                                                                                        echo $tanggal_akhir;
+                                                                                                                                        print_r($tanggal_akhir);
                                                                                                                                     } else {
-                                                                                                                                        echo $tglSekarang;
+                                                                                                                                        print_r($tglSekarang);
                                                                                                                                     } ?>">
                         </div>
                         <div class="col-md-2 my-auto">
