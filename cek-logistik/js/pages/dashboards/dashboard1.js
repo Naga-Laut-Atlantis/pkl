@@ -37,7 +37,6 @@ $(function () {
             grid: {
                 hoverable: true, //IMPORTANT! this is needed for tooltip to work
                 color: "#AFAFAF",
-                hoverable: true,
                 borderWidth: 0,
                 backgroundColor: '#FFF'
             },
