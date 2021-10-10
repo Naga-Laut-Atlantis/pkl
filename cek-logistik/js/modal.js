@@ -1,5 +1,5 @@
 // script untuk modal hapus
-$('#hapusModal').on('show.bs.modal', function (event) {
+$('#hapusModal').on("show.bs.modal", function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var recipient = button.data('whatever'); // Extract info from data-* attributes
     var recipient1 = button.data('whatever1'); // Extract info from data-* attributes
@@ -13,16 +13,16 @@ $('#hapusModal').on('show.bs.modal', function (event) {
 // script untuk modal foto
 $('#fotoModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
+    var recipient = button.data("whatever"); // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    var dir = "../assets/images/upload/"
-    modal.find('img').attr("src", dir+recipient)
-})
+    var dir = "../assets/images/upload/";
+    modal.find("img").attr("src", dir+recipient);
+});
 
 // script untuk menghapus keterangan ketika kondisi berubah
-$('#kondisi').change(function() {
+$("#kondisi").change(function() {
     $('#keterangan').val("");
 });
 
@@ -31,16 +31,17 @@ function getBarang(kode) {
     $.ajax({
         url: 'lib/response_cek.php',
         data: 'kode='+kode,
-        success: function (data) {
+        success(data) {
             var json = data,
             obj = JSON.parse(json);
             $('#pic').val(obj.pic);
             $('#jenis').val(obj.jenis);
             $('#nama').val(obj.nama);
             $('#lokasi').val(obj.lokasi);
-            $('#tahun').val(obj.tahun);
-            $('#error-kode').text(obj.error);
-    }});
+            $("#tahun").val(obj.tahun);
+            $("#error-kode").text(obj.error);
+        }   
+    });
 }
 
 // script alert auto hide
