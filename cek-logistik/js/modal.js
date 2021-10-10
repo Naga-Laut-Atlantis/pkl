@@ -11,7 +11,7 @@ $('#hapusModal').on("show.bs.modal", function (event) {
 });
 
 // script untuk modal foto
-$('#fotoModal').on('show.bs.modal', function (event) {
+$("#fotoModal").on("show.bs.modal", function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data("whatever"); // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -34,10 +34,10 @@ function getBarang(kode) {
         success(data) {
             var json = data,
             obj = JSON.parse(json);
-            $('#pic').val(obj.pic);
-            $('#jenis').val(obj.jenis);
-            $('#nama').val(obj.nama);
-            $('#lokasi').val(obj.lokasi);
+            $("#pic").val(obj.pic);
+            $("#jenis").val(obj.jenis);
+            $("#nama").val(obj.nama);
+            $("#lokasi").val(obj.lokasi);
             $("#tahun").val(obj.tahun);
             $("#error-kode").text(obj.error);
         }   
@@ -48,7 +48,7 @@ function getBarang(kode) {
 $(document).ready(function () {
     window.setTimeout(function () {
         $(".alert").fadeTo(500, 0).slideUp(500, function(){
-            $(this).alert('close');
+            $(this).alert("close");
         });
     }, 3500);
 });
