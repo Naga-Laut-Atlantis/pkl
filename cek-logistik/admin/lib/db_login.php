@@ -11,9 +11,13 @@ if ($db->connect_errno){
 }
 
 function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
+   if (isset($data)) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+   }
+
+   return null;
 }
 ?>
