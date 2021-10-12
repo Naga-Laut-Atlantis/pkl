@@ -25,9 +25,9 @@
 <!-- ============================================================== -->
 <?php
 setlocale(LC_ALL, 'id-ID', 'id_ID.utf8');
-if (isset($_POST['submit'], $_POST['tanggal-awal'], $_POST['tanggal-akhir'])) {
-    $tanggal_awal = $_POST['tanggal-awal'];
-    $tanggal_akhir = $_POST['tanggal-akhir'];
+if (isset($_POST['submit'])) {
+    $tanggal_awal = isset($_POST['tanggal-awal'])?$_POST['tanggal-awal']:null;
+    $tanggal_akhir = isset($_POST['tanggal-akhir'])?$_POST['tanggal-akhir']:null;
 }
 $tglSekarang = date('Y-m-d');
 $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
