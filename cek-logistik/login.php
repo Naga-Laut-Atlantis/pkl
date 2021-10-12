@@ -15,8 +15,8 @@ if (isset($_SESSION['kode'])) { // cek session
 require_once 'lib/db_login.php';
 
 if (isset($_POST["submit"])) {
-    $kode = test_input($_POST['kode']);
-    $password = test_input($_POST['password']);
+    $kode = test_input(isset($_POST['kode'])?$_POST['kode']:null);
+    $password = test_input(isset($_POST['password'])?$_POST['password']:null);
 
     // execute the query
     $result = $db->query(" SELECT * FROM user WHERE kode='".$kode."' AND password='".md5($password)."' ");
