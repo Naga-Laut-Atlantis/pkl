@@ -136,9 +136,9 @@ $bulanLalu = date("Y-m-d", strtotime("-1 Months"));
                         <tbody>
                         <?php
                             if (isset($tanggal_awal)) {
-                                $query = " SELECT * FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$tanggal_awal."' AND '".$tanggal_akhir."' ORDER BY tgl_cek DESC ";
+                                $query = " SELECT * FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE barang.pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$tanggal_awal."' AND '".$tanggal_akhir."' ORDER BY tgl_cek DESC ";
                             } else {
-                                $query = " SELECT * FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$bulanLalu."' AND '".$tglSekarang."' ORDER BY tgl_cek DESC ";
+                                $query = " SELECT * FROM cek JOIN barang ON cek.kode_brg=barang.kode_brg WHERE barang.pic='".$_SESSION['kode']."' AND tgl_cek BETWEEN '".$bulanLalu."' AND '".$tglSekarang."' ORDER BY tgl_cek DESC ";
                             }
                             $result = $db->query($query);
                             if (!$result) {
